@@ -15,6 +15,7 @@ import edu.usf.cutr.obascs.utils.Logger;
 
 /*
  * TODO: documentation
+ * TODO: add json alternative
  */
 
 public class OBASCSMain {
