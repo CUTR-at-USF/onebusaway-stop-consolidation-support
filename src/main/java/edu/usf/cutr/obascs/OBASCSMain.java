@@ -15,7 +15,8 @@ import edu.usf.cutr.obascs.utils.Logger;
 
 /*
  * TODO: documentation
- * TODO: add json alternative
+ * TODO: implementing alternative outputting method as json 
+ * TODO: create a files folder and add executable jar 
  */
 
 public class OBASCSMain {
