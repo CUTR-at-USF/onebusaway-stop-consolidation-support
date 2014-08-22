@@ -7,3 +7,6 @@ java -jar OBASCS.jar param1 param2
 
 jar file path: OBASCS/src/main/files/OBASCS.jar
 
+Google spreadsheet url example:
+
+"https://spreadsheets.google.com/feeds/spreadsheets/ + SPREADSHEET_ID"
