@@ -1,6 +1,7 @@
 package edu.usf.cutr.obascs.io;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.SystemUtils;
 
 import com.google.gdata.data.spreadsheet.ListEntry;
 import com.google.gdata.data.spreadsheet.ListFeed;
@@ -13,8 +14,9 @@ public class FileConsolidator {
     public static String consolidateFile(ListFeed feed) {
 
 	StringBuilder sb = new StringBuilder("#summary HART consolidated stops");
-	sb.append(StringConstants.NEW_LINE).append(StringConstants.NEW_LINE);
-	sb.append(StringConstants.FILE_START).append(StringConstants.NEW_LINE).append(StringConstants.NEW_LINE);
+	
+	sb.append(SystemUtils.LINE_SEPARATOR).append(SystemUtils.LINE_SEPARATOR);
+	sb.append(StringConstants.FILE_START).append(SystemUtils.LINE_SEPARATOR).append(SystemUtils.LINE_SEPARATOR);
 
 	for (ListEntry entry : feed.getEntries()) {
 	    String hartBusId = entry.getCustomElements().getValue(GeneralConstants.TAG_HART);
@@ -34,10 +36,10 @@ public class FileConsolidator {
 	    if (StringUtils.isNotBlank(pstaBusId)) {
 		sb.append(GeneralConstants.AGENCY_ID_PSTA).append(StringConstants.UNDERSCORE).append(pstaBusId);
 	    }
-	    sb.append(StringConstants.NEW_LINE);
+	    sb.append(SystemUtils.LINE_SEPARATOR);
 	}
 
-	sb.append(StringConstants.NEW_LINE).append(StringConstants.FILE_END);
+	sb.append(SystemUtils.LINE_SEPARATOR).append(StringConstants.FILE_END);
 	
 	return sb.toString();
     }
