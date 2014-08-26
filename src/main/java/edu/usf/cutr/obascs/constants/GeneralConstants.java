@@ -2,8 +2,6 @@ package edu.usf.cutr.obascs.constants;
 
 public class GeneralConstants {
 
-    public static final String GOOGLE_ACCOUNT_USERNAME = "onebusawaystopconsolidation@gmail.com"; 
-    public static final String GOOGLE_ACCOUNT_PASSWORD = "cagricetin";
     public static final String SPREADSHEET_URL = "https://spreadsheets.google.com/feeds/spreadsheets/1CmdPkMPo3Bgh4qfwf6BBZFMPBCJ9gC1WczUA8RU9vxw";
     
     public static int GDATA_TIMEOUT = 10* 1000;
