@@ -1,3 +1,6 @@
+onebusaway-stop-consolidation-support [![Build Status](https://travis-ci.org/CUTR-at-USF/onebusaway-stop-consolidation-support.svg?branch=master)](https://travis-ci.org/CUTR-at-USF/onebusaway-stop-consolidation-support)
+===========================
+
 Run parameters
 
 -d	print debug message
