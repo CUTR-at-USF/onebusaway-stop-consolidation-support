@@ -24,11 +24,14 @@ import com.google.gdata.data.spreadsheet.ListFeed;
 
 import edu.usf.cutr.obascs.constants.GeneralConstants;
 import edu.usf.cutr.obascs.constants.StringConstants;
+import edu.usf.cutr.obascs.utils.Logger;
 
 public class FileConsolidator {
-
+    
     public static String consolidateFile(ListFeed feed) {
-
+	Logger logger = Logger.getInstance();
+	logger.debug("Merging files started...");
+	
 	StringBuilder sb = new StringBuilder("#summary HART consolidated stops");
 	
 	sb.append(SystemUtils.LINE_SEPARATOR).append(SystemUtils.LINE_SEPARATOR);
@@ -53,9 +56,12 @@ public class FileConsolidator {
 		sb.append(GeneralConstants.AGENCY_ID_PSTA).append(StringConstants.UNDERSCORE).append(pstaBusId);
 	    }
 	    sb.append(SystemUtils.LINE_SEPARATOR);
+	    
+	    logger.debug("hartBusId = " + hartBusId + " bullrunnerBusId = " + bullrunnerBusId + " pstaBusId = " + pstaBusId);
 	}
 
 	sb.append(SystemUtils.LINE_SEPARATOR).append(StringConstants.FILE_END);
+	logger.debug("Merge finished");
 	
 	return sb.toString();
     }

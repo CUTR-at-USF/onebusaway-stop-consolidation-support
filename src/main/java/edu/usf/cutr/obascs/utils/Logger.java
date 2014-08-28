@@ -19,8 +19,26 @@ package edu.usf.cutr.obascs.utils;
 import edu.usf.cutr.obascs.constants.GeneralConstants;
 
 public class Logger {
+    private String level;
+    private static Logger instance = null; 
+    
+    private Logger(){
+	
+    }
+    
+    public static Logger getInstance(){
+	if (instance == null) {
+	    instance = new Logger();
+	}
+	return instance;
+    }
+    
+    public Logger setup(String level){
+	this.level = level;
+	return instance;
+    }
 
-    public static void logError(Exception e, String level){
+    public void logError(Exception e){
 	if (GeneralConstants.LOG_LEVEL_DEBUG.equals(level)) {
 	    e.printStackTrace();
 	}else {
@@ -28,15 +46,17 @@ public class Logger {
 	}
     }
 
-    public static void logError(Exception e){
-	logError(e, null);
-    }
-
-    public static void logError(String str){
+    public void logError(String str){
 	System.err.println(str);
     }
     
-    public static void log(Object o){
+    public void log(Object o){
 	System.out.println(o);
+    }
+    
+    public void debug(Object o){
+	if (GeneralConstants.LOG_LEVEL_DEBUG.equals(level)) {
+	    System.out.println(o);
+	}
     }
 }
