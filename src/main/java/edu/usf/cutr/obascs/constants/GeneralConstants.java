@@ -20,8 +20,8 @@ public class GeneralConstants {
 
     public static int GDATA_TIMEOUT = 10* 1000;
     
-    public static final String AGENCY_ID_HART = "Hillsborough Area Regional Transit";
-    public static final String AGENCY_ID_USF = "USF BullRunner";
+    public static final String AGENCY_ID_HART = "Hillsborough&nbspArea&nbspRegional&nbspTransit";
+    public static final String AGENCY_ID_USF = "USF&nbspBullRunner";
     public static final String AGENCY_ID_PSTA = "PSTA";
 
     public static final String TAG_HART = "hartstopid";

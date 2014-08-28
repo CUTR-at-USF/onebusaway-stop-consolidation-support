@@ -40,7 +40,7 @@ public class CommandLineUtil {
 	    spreadSheetId = cmd.getOptionValue(GeneralConstants.CL_OPTION_SPREADSHEET_ID);
 	} else {
 	    Scanner scanner = new Scanner(System.in);
-	    Logger.log("Enter SpreadSheet id:");
+	    Logger.getInstance().log("Enter SpreadSheet id:");
 	    spreadSheetId = scanner.nextLine();
 	    scanner.close();
 	}

@@ -43,6 +43,8 @@ public class OBASCSMain {
 	String logLevel = null;
 	String filePath = null;
 	String spreadSheetId = null;
+	Logger logger = Logger.getInstance();
+	
 
 	Options options = CommandLineUtil.createCommandLineOptions();
 	CommandLineParser parser = new BasicParser();
@@ -50,41 +52,42 @@ public class OBASCSMain {
 	try {
 	    cmd = parser.parse(options, args);
 	    logLevel = CommandLineUtil.getLogLevel(cmd);
+	    logger.setup(logLevel);
 	    filePath = CommandLineUtil.getOutputPath(cmd);
 	    spreadSheetId = CommandLineUtil.getSpreadSheetId(cmd);
 	} catch (ParseException e1) {
-	    Logger.logError(e1, logLevel);
+	    logger.logError(e1);
 	}
 
-	Logger.log("Consolidation started...");
-	Logger.log("Trying as public url");
+	logger.log("Consolidation started...");
+	logger.log("Trying as public url");
 
 	ListFeed listFeed = null;
 	Boolean authRequired = false;
 	try {
 	    listFeed = SpreadSheetReader.readPublicSpreadSheet(spreadSheetId);
 	} catch (IOException e) {
-	    Logger.logError(e, logLevel);
+	    logger.logError(e);
 	} catch (ServiceException e) {
-	    Logger.log("Authentication Required");
+	    logger.log("Authentication Required");
 	    authRequired = true;
 	}
 
 	if (listFeed == null && authRequired == true) {
 	    Scanner scanner = new Scanner(System.in);
 	    String userName, password;
-	    Logger.log("UserName:");
+	    logger.log("UserName:");
 	    userName = scanner.nextLine();
-	    Logger.log("Password:");
+	    logger.log("Password:");
 	    password = scanner.nextLine();
 	    scanner.close();
 
 	    try {
 		listFeed = SpreadSheetReader.readPrivateSpreadSheet(userName, password, spreadSheetId);
 	    } catch (IOException e) {
-		Logger.logError(e, logLevel);
+		logger.logError(e);
 	    } catch (ServiceException e) {
-		Logger.logError(e, logLevel);
+		logger.logError(e);
 	    }
 	}
 
@@ -93,13 +96,13 @@ public class OBASCSMain {
 	    try {
 		FileWriter.writeToFile(consolidatedString, filePath);
 	    } catch (FileNotFoundException e) {
-		Logger.logError(e, logLevel);
+		logger.logError(e);
 	    }
 	} else {
-	    Logger.logError("Cannot write files");
+	    logger.logError("Cannot write files");
 	}
 
-	Logger.log("Consolidation finished...");
+	logger.log("Consolidation finished...");
 
     }
 }
