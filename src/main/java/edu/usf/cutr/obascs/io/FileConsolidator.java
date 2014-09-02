@@ -31,6 +31,7 @@ public class FileConsolidator {
     public static String consolidateFile(ListFeed feed) {
 	Logger logger = Logger.getInstance();
 	logger.debug("Merging files started...");
+	logger.debug("Total Entries : " + feed.getEntries().size());
 	
 	StringBuilder sb = new StringBuilder("#summary HART consolidated stops");
 	
