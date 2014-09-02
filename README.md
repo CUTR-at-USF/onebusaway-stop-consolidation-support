@@ -12,3 +12,7 @@ A java console application to consolidate shared bus stops from google spreadshe
 
 jar file path: OBASCS/src/main/files/OBASCS.jar
 
+##Notes
+-> There shouldn't be any empty rows in spreadsheet.
+
+
