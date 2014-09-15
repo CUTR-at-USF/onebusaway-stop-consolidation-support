@@ -44,17 +44,17 @@ public class FileConsolidator {
 	    String pstaBusId = entry.getCustomElements().getValue(GeneralConstants.TAG_PSTA);
 
 	    if (StringUtils.isNotBlank(hartBusId)) {
-		sb.append(GeneralConstants.AGENCY_ID_HART).append(StringConstants.UNDERSCORE).append(hartBusId).append(StringConstants.TAB);
+		sb.append("\"").append(GeneralConstants.AGENCY_ID_HART).append(StringConstants.UNDERSCORE).append(hartBusId).append("\"").append(StringConstants.TAB);
 	    }
 
 	    if (StringUtils.isNotBlank(bullrunnerBusId)) {
-		sb.append(GeneralConstants.AGENCY_ID_USF).append(StringConstants.UNDERSCORE).append(bullrunnerBusId).append(StringConstants.TAB);
+		sb.append("\"").append(GeneralConstants.AGENCY_ID_USF).append(StringConstants.UNDERSCORE).append(bullrunnerBusId).append("\"").append(StringConstants.TAB);
 	    } else {
 		sb.append(StringConstants.TAB);
 	    }
 
 	    if (StringUtils.isNotBlank(pstaBusId)) {
-		sb.append(GeneralConstants.AGENCY_ID_PSTA).append(StringConstants.UNDERSCORE).append(pstaBusId);
+		sb.append("\"").append(GeneralConstants.AGENCY_ID_PSTA).append(StringConstants.UNDERSCORE).append(pstaBusId).append("\"");
 	    }
 	    sb.append(SystemUtils.LINE_SEPARATOR);
 	    
