@@ -39,9 +39,9 @@ public class FileConsolidator {
 	sb.append(StringConstants.FILE_START).append(SystemUtils.LINE_SEPARATOR).append(SystemUtils.LINE_SEPARATOR);
 
 	for (ListEntry entry : feed.getEntries()) {
-	    String hartBusId = entry.getCustomElements().getValue(GeneralConstants.TAG_HART);
-	    String bullrunnerBusId = entry.getCustomElements().getValue(GeneralConstants.TAG_BULLRUNNER);
-	    String pstaBusId = entry.getCustomElements().getValue(GeneralConstants.TAG_PSTA);
+	    String hartBusId = StringUtils.trim(entry.getCustomElements().getValue(GeneralConstants.TAG_HART));
+	    String bullrunnerBusId = StringUtils.trim(entry.getCustomElements().getValue(GeneralConstants.TAG_BULLRUNNER));
+	    String pstaBusId = StringUtils.trim(entry.getCustomElements().getValue(GeneralConstants.TAG_PSTA));
 
 	    if (StringUtils.isNotBlank(hartBusId)) {
 		sb.append("\"").append(GeneralConstants.AGENCY_ID_HART).append(StringConstants.UNDERSCORE).append(hartBusId).append("\"").append(StringConstants.TAB);
