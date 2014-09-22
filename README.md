@@ -10,7 +10,18 @@ A java console application to consolidate shared bus stops from google spreadshe
 -id<Spreadsheet_id> Spreadsheet id 
 ```
 
+##Default SpreadSheet URL
+```
+	https://docs.google.com/a/mail.usf.edu/spreadsheets/d/1CmdPkMPo3Bgh4qfwf6BBZFMPBCJ9gC1WczUA8RU9vxw/edit#gid=527691915
+```
 jar file path: OBASCS/src/main/files/OBASCS.jar
+
+
+##HART Consolidation script Input
+To use HART consolidation script, the output of this application needs to submit this URL:
+```
+	https://github.com/camsys/onebusaway-application-modules/wiki/HartStopConsolidation
+```
 
 ##Notes
 -> There shouldn't be any empty rows in spreadsheet.
