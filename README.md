@@ -23,5 +23,6 @@ To use HART consolidation script, the output of this application needs to submit
 
 ##Notes
 -> There shouldn't be any empty rows in spreadsheet.
+
 -> Jar file path: OBASCS/src/main/files/OBASCS.jar
 
