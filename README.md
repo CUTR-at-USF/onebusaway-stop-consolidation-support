@@ -14,8 +14,6 @@ A java console application to consolidate shared bus stops from google spreadshe
 ```
 	https://docs.google.com/a/mail.usf.edu/spreadsheets/d/1CmdPkMPo3Bgh4qfwf6BBZFMPBCJ9gC1WczUA8RU9vxw/edit#gid=527691915
 ```
-jar file path: OBASCS/src/main/files/OBASCS.jar
-
 
 ##HART Consolidation script Input
 To use HART consolidation script, the output of this application needs to submit this URL:
@@ -25,5 +23,5 @@ To use HART consolidation script, the output of this application needs to submit
 
 ##Notes
 -> There shouldn't be any empty rows in spreadsheet.
-
+-> Jar file path: OBASCS/src/main/files/OBASCS.jar
 
