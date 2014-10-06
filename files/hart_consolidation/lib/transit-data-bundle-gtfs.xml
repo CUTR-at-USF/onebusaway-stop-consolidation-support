@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <bean id="gtfs-bundles" class="org.onebusaway.transit_data_federation.bundle.model.GtfsBundles">
+        <property name="bundles">
+            <list>
+                <ref bean="gtfs_hart" />
+                <ref bean="gtfs_usf" />
+                <ref bean="gtfs_psta" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="gtfs_hart" class="org.onebusaway.transit_data_federation.bundle.model.GtfsBundle">
+        <property name="path" value="${bundle.root}/hart/final" />
+        <property name="defaultAgencyId" value="Hillsborough Area Regional Transit" />
+    </bean>
+    <bean id="gtfs_usf" class="org.onebusaway.transit_data_federation.bundle.model.GtfsBundle">
+        <property name="path" value="${bundle.root}/usf/final" />
+        <property name="defaultAgencyId" value="USF BullRunner" />
+    </bean>
+      <bean id="gtfs_psta" class="org.onebusaway.transit_data_federation.bundle.model.GtfsBundle">
+       <property name="path" value="${bundle.root}/psta/final" />
+       <property name="defaultAgencyId" value="PSTA" />
+   </bean>
+</beans>

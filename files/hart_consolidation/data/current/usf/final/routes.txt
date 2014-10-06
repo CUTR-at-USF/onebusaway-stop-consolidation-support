@@ -1,0 +1,7 @@
+route_id,route_short_name,route_long_name,route_type,route_url,route_color,route_text_color
+A,A,Green Campus Loop,3,http://usfweb2.usf.edu/parking_services/BullRunnerRoutesStops.htm,00573C,FFFFFF
+B,B,Blue USF Health,3,http://usfweb2.usf.edu/parking_services/BullRunnerRoutesStops.htm,0077D1,FFFFFF
+C,C,Purple Off-Campus North,3,http://usfweb2.usf.edu/parking_services/BullRunnerRoutesStops.htm,AC49D0,FFFFFF
+D,D,Red Off-Campus West,3,http://usfweb2.usf.edu/parking_services/BullRunnerRoutesStops.htm,F70505,FFFFFF
+E,E,Gold Campus Loop,3,http://usfweb2.usf.edu/parking_services/BullRunnerRoutesStops.htm,D4BA13,FFFFFF
+F,F,Brown Off-Campus South,3,http://usfweb2.usf.edu/parking_services/BullRunnerRoutesStops.htm,8F6A51,FFFFFF

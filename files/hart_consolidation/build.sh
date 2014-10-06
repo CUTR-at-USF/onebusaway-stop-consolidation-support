@@ -1,0 +1,67 @@
+#!/bin/bash
+
+JAVA_OPTIONS="-Xmx2g -Xms1g"
+TRANSFORM_JAR=lib/onebusaway-gtfs-transformer-cli-1.2.5.jar
+#BUILD_JAR=lib/onebusaway-transit-data-federation-builder-1.1.13-withAllDependencies.jar
+BUILD_JAR=lib/onebusaway-transit-data-federation-builder-1.1.14-SNAPSHOT-withAllDependencies.jar
+OUTPUT_DIR=bundle
+INPUTS=${1}/gtfs
+OUTPUTS=${1}/mod
+PWD=`pwd`
+
+rm -rf ${OUTPUT_DIR}
+mkdir ${OUTPUT_DIR}
+
+# if we need to mod to cleanup GTFS
+#java -server ${JAVA_OPTIONS} -jar ${TRANSFORM_JAR} "${INPUTS}/${INFILE}" "${OUTPUTS}/${OUTFILE_ROOT}" || exit 1
+
+GTFS_LIST="hart usf"
+# if no merges, then simply explode gtfs into final dir
+for gtfs in ${GTFS_LIST}
+do
+  final_dir="${PWD}/data/current/${gtfs}/final"
+  src_dir="${PWD}/data/current/${gtfs}/gtfs"
+  pushd ${src_dir}
+  unzip -u *.zip -d ${final_dir}
+  popd
+done
+
+
+for gtfs in ${GTFS_LIST}
+do
+  GTFS_DIR="${PWD}/data/current/${gtfs}/final"
+  if [ ! -d ${GTFS_DIR} ]
+  then
+    echo "missing gtfs dir ${GTFS_DIR}";
+    exit 1
+  fi
+  ls -1 ${GTFS_DIR}/*.zip >/dev/null || ls -1 ${GTFS_DIR}/*.txt >/dev/null
+  if [ $? -ne 0 ]
+  then
+    echo "missing gtfs file(s) in ${GTFS_DIR}"
+    exit 1
+  fi
+  pushd ${GTFS_DIR}
+  ls -1 ${GTFS_DIR}/*.zip >/dev/null
+  if [ $? -eq 0 ]
+  then
+    unzip -u *.zip || exit 1
+    rm *.zip
+  fi
+  popd
+done
+
+echo "building bundle ${PWD}/data/current to `pwd`/bundle"
+echo "see output at ${OUTPUT_DIR}/generate-bundle-output.log"
+
+java \
+ -Xmx2G -Xms1G -server \
+ -Dbundle.root="${PWD}/data/current" \
+ -cp ${BUILD_JAR} \
+ org.onebusaway.transit_data_federation.bundle.FederatedTransitDataBundleCreatorMain \
+ -P tripEntriesFactory.throwExceptionOnInvalidStopToShapeMappingException=false \
+ $@ \
+ lib/common-data-sources.xml \
+ lib/transit-data-bundle-gtfs.xml \
+ lib/transit-data-bundle-other.xml \
+ ${OUTPUT_DIR} | tee ${OUTPUT_DIR}/generate-bundle-output.log
