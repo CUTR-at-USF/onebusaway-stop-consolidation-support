@@ -9,6 +9,8 @@ A java console application to consolidate shared bus stops from google spreadshe
 -o<file_path>	Output file url with name (default current directory)
 -id<Spreadsheet_id> Spreadsheet id 
 ```
+##Setup
+Please see our [setup guide](https://github.com/OneBusAway/onebusaway-application-modules/wiki/) for details, including spreadsheet format, realtime configuration.
 
 ##Default SpreadSheet URL
 ```
