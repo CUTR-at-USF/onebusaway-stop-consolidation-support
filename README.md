@@ -10,7 +10,7 @@ A java console application to consolidate shared bus stops from google spreadshe
 -id<Spreadsheet_id> Spreadsheet id 
 ```
 ##Setup
-Please see our [setup guide](https://github.com/OneBusAway/onebusaway-application-modules/wiki/) for details, including spreadsheet format, realtime configuration.
+Please see our [setup guide](https://github.com/CUTR-at-USF/onebusaway-stop-consolidation-support/wiki) for details, including spreadsheet format, realtime configuration.
 
 ##Default SpreadSheet URL
 ```
