@@ -9,6 +9,11 @@ A java console application to consolidate shared bus stops from google spreadshe
 -o<file_path>	Output file url with name (default current directory)
 -id<Spreadsheet_id> Spreadsheet id 
 ```
+#Example
+```
+-o /path/to/Output.txt -d -id 1CmdPkMPo3Bgh4qfwf6BBZFMPBCJ9gC1WczUA8RU9vxw
+```
+
 ##Setup
 Please see our [setup guide](https://github.com/CUTR-at-USF/onebusaway-stop-consolidation-support/wiki) for details, including spreadsheet format, realtime configuration.
 
