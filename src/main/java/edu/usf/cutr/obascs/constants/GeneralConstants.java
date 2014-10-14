@@ -34,7 +34,9 @@ public class GeneralConstants {
     
     public static final String CL_OPTION_DEBUG = "d";
     public static final String CL_OPTION_OUTPUT_PATH = "o";
+    public static final String CL_OPTION_INPUT_PATH = "i";
     public static final String CL_OPTION_SPREADSHEET_ID = "id";
+    
     
     
 }
