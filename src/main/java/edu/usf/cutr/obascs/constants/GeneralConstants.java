@@ -39,5 +39,11 @@ public class GeneralConstants {
     
     public static final String AGENCY_MAP_IDENTIFIER = "agency_id";
     public static final String CONSOLIDATION_SCRIPT_CONFIG_FILE = "transit-data-bundle-gtfs.xml";
+    public static final String SAMPLE_REALTIME_CONFIG_FILE = "sample-data-sources.xml";
+
+    public static final String SAMPLE_REALTIME_CONFIG_TRIP_UPDATES_URL = "http://example.updates.com/trip-updates";
+    public static final String SAMPLE_REALTIME_CONFIG_VEHICLE_POS_URL = "http://example.updates.com/vehicle-positions";
+    public static final String SAMPLE_REALTIME_CONFIG_ALERTS_URL = "http://example.updates.com/alerts";
+    
     
 }

@@ -18,7 +18,6 @@ package edu.usf.cutr.obascs;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream.GetField;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -123,6 +122,17 @@ public class OBASCSMain {
 		String configXml = FileUtil.readFile(URLUtil.trimSpace(path));
 		configXml = ConfigFileGenerator.generateStopConsolidationScriptConfigFile(configXml, agencyMap);
 		path = URLUtil.trimPath(outputFilePath) + "/" + GeneralConstants.CONSOLIDATION_SCRIPT_CONFIG_FILE;
+		FileUtil.writeToFile(configXml, path);
+	    } catch (IOException e) {
+		logger.logError(e);
+	    }
+	    
+	  //Creating sample real-time config file
+	    try {
+		String path = ClassLoader.getSystemClassLoader().getResource(GeneralConstants.SAMPLE_REALTIME_CONFIG_FILE).getPath();
+		String configXml = FileUtil.readFile(URLUtil.trimSpace(path));
+		configXml = ConfigFileGenerator.generateSampleRealTimeConfigFile(configXml, agencyMap);
+		path = URLUtil.trimPath(outputFilePath) + "/" + GeneralConstants.SAMPLE_REALTIME_CONFIG_FILE;
 		FileUtil.writeToFile(configXml, path);
 	    } catch (IOException e) {
 		logger.logError(e);

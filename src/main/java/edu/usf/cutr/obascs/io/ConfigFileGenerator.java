@@ -20,6 +20,8 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 
+import edu.usf.cutr.obascs.constants.GeneralConstants;
+
 /**
  * @author cagryInside
  *
@@ -44,6 +46,30 @@ public class ConfigFileGenerator {
 	
 	configXml = StringUtils.replace(configXml, "${bundleNames}", bundleNamesBuilder.toString());
 	configXml = StringUtils.replace(configXml, "${gtfsBeans}", gtfsBeansBuilder.toString());
+	return configXml;
+    }
+    
+    public static String generateSampleRealTimeConfigFile(String configXml, Map<String, String> agencyMap){
+	StringBuilder bundleNamesBuilder  = new StringBuilder();
+	for (Map.Entry<String, String> agency : agencyMap.entrySet()) {
+	    bundleNamesBuilder.append("<bean class=\"org.onebusaway.transit_data_federation.impl.realtime.gtfs_realtime.GtfsRealtimeSource\">");
+	    bundleNamesBuilder.append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("<property name=\"tripUpdatesUrl\" value=\"").append(GeneralConstants.SAMPLE_REALTIME_CONFIG_TRIP_UPDATES_URL);
+	    bundleNamesBuilder.append("\" />").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("<property name=\"vehiclePositionsUrl\" value=\"").append(GeneralConstants.SAMPLE_REALTIME_CONFIG_VEHICLE_POS_URL);
+	    bundleNamesBuilder.append("\" />").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("<property name=\"alertsUrl\" value=\"").append(GeneralConstants.SAMPLE_REALTIME_CONFIG_ALERTS_URL);
+	    bundleNamesBuilder.append("\" />").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("<property name=\"refreshInterval\" value=\"15\" />").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("<property name=\"agencyIds\">").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("<list>").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("<value>").append(agency.getKey()).append("</value>").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("</list>").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("</property>").append(SystemUtils.LINE_SEPARATOR);
+	    bundleNamesBuilder.append("</bean>").append(SystemUtils.LINE_SEPARATOR);
+	}
+	
+	configXml = StringUtils.replace(configXml, "${beanNames}", bundleNamesBuilder.toString());
 	return configXml;
     }
 }
