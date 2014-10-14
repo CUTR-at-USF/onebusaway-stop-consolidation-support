@@ -37,6 +37,7 @@ public class GeneralConstants {
     public static final String CL_OPTION_INPUT_PATH = "i";
     public static final String CL_OPTION_SPREADSHEET_ID = "id";
     
-    
+    public static final String AGENCY_MAP_IDENTIFIER = "agency_id";
+    public static final String CONSOLIDATION_SCRIPT_CONFIG_FILE = "transit-data-bundle-gtfs.xml";
     
 }

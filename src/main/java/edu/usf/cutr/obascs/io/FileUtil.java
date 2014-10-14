@@ -22,11 +22,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import edu.usf.cutr.obascs.constants.GeneralConstants;
 import edu.usf.cutr.obascs.constants.StringConstants;
 
 public class FileUtil {
@@ -47,7 +50,7 @@ public class FileUtil {
 	    String line = br.readLine();
 
 	    while (line != null) {
-		if (StringUtils.isNotBlank(line)) {
+		if (StringUtils.isNotBlank(line) && line.contains(GeneralConstants.AGENCY_MAP_IDENTIFIER) == false) {
 		    try {
 			String[] split = line.split(StringConstants.COMMA);
 			agencyMap.put(split[0], split[1]);
@@ -63,5 +66,10 @@ public class FileUtil {
 	}
 
 	return agencyMap;
+    }
+
+    public static String readFile(String path) throws IOException {
+	byte[] encoded = Files.readAllBytes(Paths.get(path));
+	return new String(encoded, "UTF-8");
     }
 }

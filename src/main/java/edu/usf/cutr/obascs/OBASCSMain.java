@@ -18,6 +18,7 @@ package edu.usf.cutr.obascs;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream.GetField;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -30,11 +31,14 @@ import org.apache.commons.cli.ParseException;
 import com.google.gdata.data.spreadsheet.ListFeed;
 import com.google.gdata.util.ServiceException;
 
+import edu.usf.cutr.obascs.constants.GeneralConstants;
+import edu.usf.cutr.obascs.io.ConfigFileGenerator;
 import edu.usf.cutr.obascs.io.FileConsolidator;
 import edu.usf.cutr.obascs.io.FileUtil;
 import edu.usf.cutr.obascs.io.SpreadSheetReader;
 import edu.usf.cutr.obascs.utils.CommandLineUtil;
 import edu.usf.cutr.obascs.utils.Logger;
+import edu.usf.cutr.obascs.utils.URLUtil;
 
 
 public class OBASCSMain {
@@ -105,10 +109,22 @@ public class OBASCSMain {
 	}
 
 	if (listFeed != null) {
+	    //Creating consolidated stops
 	    String consolidatedString = FileConsolidator.consolidateFile(listFeed, agencyMap);
 	    try {
 		FileUtil.writeToFile(consolidatedString, outputFilePath);
 	    } catch (FileNotFoundException e) {
+		logger.logError(e);
+	    }
+	    
+	    //Creating sample stop consolidation script config file
+	    try {
+		String path = ClassLoader.getSystemClassLoader().getResource(GeneralConstants.CONSOLIDATION_SCRIPT_CONFIG_FILE).getPath();
+		String configXml = FileUtil.readFile(URLUtil.trimSpace(path));
+		configXml = ConfigFileGenerator.generateStopConsolidationScriptConfigFile(configXml, agencyMap);
+		path = URLUtil.trimPath(outputFilePath) + "/" + GeneralConstants.CONSOLIDATION_SCRIPT_CONFIG_FILE;
+		FileUtil.writeToFile(configXml, path);
+	    } catch (IOException e) {
 		logger.logError(e);
 	    }
 	} else {
