@@ -25,4 +25,15 @@ public class URLUtil {
     public static String createPublicSpreadSheetUrl(String spreadSheetId){
 	return "https://spreadsheets.google.com/feeds/list/" + spreadSheetId + "/default/public/values";
     }
+    
+    public static String trimSpace(String url){
+	if (url != null) {
+	    url = url.replaceAll("%20", "\\ ");
+	}
+	return url;
+    }
+    
+    public static String trimPath(String url){
+	return url.replaceAll("/[^/]*$", "");
+    }
 }

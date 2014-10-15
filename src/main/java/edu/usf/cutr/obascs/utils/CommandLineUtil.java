@@ -16,6 +16,7 @@
 
 package edu.usf.cutr.obascs.utils;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import org.apache.commons.cli.CommandLine;
@@ -30,6 +31,7 @@ public class CommandLineUtil {
 	options.addOption(GeneralConstants.CL_OPTION_DEBUG, false, "print debugging information");
 	options.addOption(GeneralConstants.CL_OPTION_OUTPUT_PATH, true, "Output file path");
 	options.addOption(GeneralConstants.CL_OPTION_SPREADSHEET_ID, true, "Spread sheet id");
+	options.addOption(GeneralConstants.CL_OPTION_INPUT_PATH, true, "Agency name mappig input file path");
 	return options;
     }
 
@@ -62,6 +64,16 @@ public class CommandLineUtil {
 	    filePath = cmd.getOptionValue(GeneralConstants.CL_OPTION_OUTPUT_PATH);
 	} else {
 	    filePath = GeneralConstants.DEFAULT_FILE_LOCATION;
+	}
+	return filePath;
+    }
+    
+    public static String getInputPath(CommandLine cmd) throws FileNotFoundException {
+	String filePath;
+	if (cmd.hasOption(GeneralConstants.CL_OPTION_INPUT_PATH)) {
+	    filePath = cmd.getOptionValue(GeneralConstants.CL_OPTION_INPUT_PATH);
+	} else {
+	    throw new FileNotFoundException("Agency mapping file not found.");
 	}
 	return filePath;
     }
