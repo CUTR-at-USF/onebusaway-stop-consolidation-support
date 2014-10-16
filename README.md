@@ -28,7 +28,12 @@ To use HART consolidation script, the output of this application needs to submit
 ```
 	https://github.com/camsys/onebusaway-application-modules/wiki/HartStopConsolidation
 ```
-
+##Output (Generated Files)
+ ```
+ Consolidated stops output file
+ Stop consolidation script configuration file
+ Samle realtime configuration file
+ ```
 ##Notes
 -> There shouldn't be any empty rows in spreadsheet.
 
