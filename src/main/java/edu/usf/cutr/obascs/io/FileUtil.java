@@ -53,7 +53,13 @@ public class FileUtil {
 		if (StringUtils.isNotBlank(line) && line.contains(GeneralConstants.AGENCY_MAP_IDENTIFIER) == false) {
 		    try {
 			String[] split = line.split(StringConstants.COMMA);
-			agencyMap.put(split[0], split[1]);
+			String agency = null;
+			if (StringUtils.isNotBlank(split[0])) {
+			    agency = split[0];
+			} else {
+			    agency = split[1];
+			}
+			agencyMap.put(agency, split[2]);
 		    } catch (Exception e) {
 			throw new IOException("Wrong line format. Line should be comma seperated.");
 		    }
