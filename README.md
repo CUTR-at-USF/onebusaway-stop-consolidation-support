@@ -30,9 +30,9 @@ To use HART consolidation script, the output of this application needs to submit
 ```
 ##Output (Generated Files)
  ```
- Consolidated stops output file
- Stop consolidation script configuration file
- Samle realtime configuration file
+ -Consolidated stops output file
+ -Stop consolidation script configuration file
+ -Samle realtime configuration file
  ```
 ##Notes
 -> There shouldn't be any empty rows in spreadsheet.
