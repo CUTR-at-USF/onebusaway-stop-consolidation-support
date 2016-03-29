@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -43,7 +43,7 @@ public class FileUtil {
 
     public static Map<String, String> readAgencyInformantions(String path) throws IOException {
 
-	Map<String, String> agencyMap = new HashMap<String, String>();
+	Map<String, String> agencyMap = new LinkedHashMap<String, String>();
 
 	BufferedReader br = new BufferedReader(new FileReader(path));
 	try {
